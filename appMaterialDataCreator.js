@@ -22,6 +22,8 @@
     var chanel = "materialDataCreator.ak.vircadia";
     var nightmode = false;
     var demoID, materialID;
+    var currentMaterialRecord;
+    var currentDemoShape = "cube";
 
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
 
@@ -102,6 +104,7 @@
         eventObj = JSON.parse(message);
         if ( eventObj.chanel === chanel){
             if ( eventObj.action === "updateMaterialData"){
+                currentMaterialRecord = eventObj.materialRecord;
                 updateDemo(eventObj.materialData);
             }
             if ( eventObj.action === "changeDemoShape"){
@@ -157,6 +160,13 @@
     function onScreenChanged(type, url) {
         if (type == "Web" && url.indexOf(APP_URL) != -1) {
             appStatus = true;
+
+            var message = {
+                "chanel": chanel,
+                "action": "initializeMaterial",
+                "material": currentMaterialRecord
+            };
+            tablet.emitScriptEvent(JSON.stringify(message));
         } else {
             appStatus = false;
             deleteDemo();
@@ -167,6 +177,7 @@
     }
 
     function changeDemoShape(shape) {
+        currentDemoShape = shape;
         var prop = Entities.getEntityProperties(demoID, ["position"]);
         Entities.editEntity(materialID,{ parentID: "{00000000-0000-0000-0000-000000000000}",});
         Entities.deleteEntity(demoID);

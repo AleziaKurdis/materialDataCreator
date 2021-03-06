@@ -287,7 +287,8 @@
                 var message = {
                     "chanel": chanel,
                     "action": "updateMaterialData",
-                    "materialData": materialData
+                    "materialData": materialData,
+                    "materialRecord": material
                 };
                 
                 EventBridge.emitWebEvent(JSON.stringify(message));
@@ -322,10 +323,14 @@
             var chanel = "materialDataCreator.ak.vircadia";
             EventBridge.scriptEventReceived.connect(function(message){
 
-                //messageObj = parseJSON(message);
+                var messageObj = parseJSON(message);
 
-                //react to the "message" string or to the "messageObj" JSON object. 
-
+                if (messageObj.chanel === chanel) {
+                    if (messageObj.action === "initializeMaterial") {
+                        material = messageObj.material;
+                        LoadMaterial();
+                    }
+                }
             });
 
 			function copyToClipboard(data) {
