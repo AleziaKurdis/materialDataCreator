@@ -497,7 +497,7 @@
 
             EventBridge.scriptEventReceived.connect(function (message) {
                 var messageObj = JSON.parse(message);
-                if (message === "Patate") {alert(JSON.stringify(messageObj));}  //##################################################################
+                if (message === "patate") {alert(JSON.stringify(messageObj));}  //##################################################################
                 if (messageObj.chanel === chanel) {
                     alert(messageObj.material);  //##################################################################
                     if (messageObj.action === "initializeMaterial") {
