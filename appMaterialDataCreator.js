@@ -167,6 +167,7 @@
                 "material": currentMaterialRecord
             };
             tablet.emitScriptEvent(JSON.stringify(message));
+            print("MESSAGE: " + JSON.stringify(message));
         } else {
             appStatus = false;
             deleteDemo();
