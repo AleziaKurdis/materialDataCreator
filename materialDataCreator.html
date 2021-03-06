@@ -326,8 +326,8 @@
                 var messageObj = parseJSON(message);
 
                 if (messageObj.chanel === chanel) {
+                    alert("Got it!");
                     if (messageObj.action === "initializeMaterial") {
-                        alert("Got it!");
                         if (messageObj.material !== undefined) {
                             material = messageObj.material;
                         }
