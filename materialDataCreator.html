@@ -76,9 +76,12 @@
             img.save{
                 background-color: #dfd093;
             }
+            img.reset{
+                background-color: #d16c64;
+            }
             img.studio{
                 background-color: #c6dcb6;
-            }
+            }            
             td.title {
                 text-align: center;
                 font-family: arial,sans-serif, helvetica;  
@@ -112,7 +115,7 @@
                                 }; 
 
 
-            function ResetMaterial() {
+            function resetMaterial() {
                 material = {
                                     "name": "untitled",
                                     "albedo": "#ffffff",
@@ -156,11 +159,10 @@
                 document.materialEditor.emissiveMap.value = "";
                 document.materialEditor.scatteringMap.value = "";
                 document.materialEditor.occlusionMap.value = "";                 
-                
             }
                 
             
-            function LoadMaterial() {        
+            function loadMaterial() {        
                 document.materialEditor.name.value = material.name;
                 document.materialEditor.albedo.value = material.albedo;
                 document.materialEditor.metallic.value = material.metallic * 1000;
@@ -183,7 +185,6 @@
                 document.materialEditor.emissiveMap.value = material.emissiveMap;
                 document.materialEditor.scatteringMap.value = material.scatteringMap;
                 document.materialEditor.occlusionMap.value = material.occlusionMap;                 
-                
             }
             
             function save( attribute, valueContainer) {
@@ -396,9 +397,9 @@
                 <td style= 'width: 10%;'><a href='#' onclick='demo("teapot");'><img class='demo' src="images/demo_teapot.png"></a></td>
                 <td style= 'width: 10%;'><a href='#' onclick='demo("vircadia");'><img class='demo' src="images/demo_vircadia.png"></a></td>
                 <td style= 'width: 10%;'>&nbsp;</td>
-                <td style= 'width: 10%;'><a href='#' ><img class='studio' src="images/studio.png" onclick='teleportToServerless();'></a></td>
-                <td style= 'width: 10%;'><a href='#' ><img class='studio' src="images/toggle_day_night.png" onclick='toggleDayNight();'></a></td>
-                <td style= 'width: 10%;'>&nbsp;</td>
+                <td style= 'width: 10%;'><a href='#' onclick='teleportToServerless();'><img class='studio' src="images/studio.png"></a></td>
+                <td style= 'width: 10%;'><a href='#' onclick='toggleDayNight();'><img class='studio' src="images/toggle_day_night.png"></a></td>
+                <td style= 'width: 10%;'><a href='#' onclick='resetMaterial();'><img  class='reset' src="images/reset.png"></a></td>
                 <td style= 'width: 10%;'><a href='#' onclick='exportAsJson();'><img class='save' src="images/save_as_json.png"></a></td>
                 <td style= 'width: 10%;'><a href='#' onclick='createMaterialEntity();'><img class='save' src="images/create_material_entity.png"></a></td>
                 </tr></table>
@@ -502,7 +503,7 @@
                         if (messageObj.material !== undefined) {
                             material = messageObj.material;
                         }
-                        LoadMaterial();
+                        loadMaterial();
                         generateMaterialJSON();
                     }
                 }
