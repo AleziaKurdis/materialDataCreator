@@ -327,8 +327,11 @@
 
                 if (messageObj.chanel === chanel) {
                     if (messageObj.action === "initializeMaterial") {
-                        material = messageObj.material;
+                        if (messageObj.material !== undefined) {
+                            material = messageObj.material;
+                        }
                         LoadMaterial();
+                        generateMaterialJSON();
                     }
                 }
             });
@@ -506,8 +509,8 @@
             });            
             //==================
             
-            LoadMaterial();
-            generateMaterialJSON();
+            //LoadMaterial();
+            //generateMaterialJSON();
         </script>
     </body>
 </html>
