@@ -167,7 +167,9 @@
                 "material": currentMaterialRecord
             };
             tablet.emitScriptEvent("patate"); //############################# IS IT WORKING ????
-            tablet.emitScriptEvent(JSON.stringify(message)); //############################# IS IT WORKING ????
+            Script.setTimeout(function () {
+                tablet.emitScriptEvent(JSON.stringify(message)); //############################# IS IT WORKING ????
+            }, 1000);
             changeDemoShape(currentDemoShape);
             print("MESSAGE: " + JSON.stringify(message)); //##################################################################
         } else {
