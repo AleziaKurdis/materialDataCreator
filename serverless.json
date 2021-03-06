@@ -89,7 +89,7 @@
          },
          "ambientLight":{
             "ambientIntensity":0.80000001192093,
-            "ambientURL":"images/zoneDayAmbient.jpg"
+            "ambientURL":"https://aleziakurdis.github.io/materialDataCreator/images/zoneDayAmbient.jpg"
          },
          "skybox":{
             "color":{
@@ -97,7 +97,7 @@
                "green":255,
                "blue":255
             },
-            "url":"images/zoneDaySky.png"
+            "url":"https://aleziakurdis.github.io/materialDataCreator/images/zoneDaySky.png"
          },
          "haze":{
             "hazeRange":800,
@@ -175,7 +175,7 @@
          },
          "ambientLight":{
             "ambientIntensity":0.25,
-            "ambientURL":"images/zoneNightAmbient.jpg"
+            "ambientURL":"https://aleziakurdis.github.io/materialDataCreator/images/zoneNightAmbient.jpg"
          },
          "skybox":{
             "color":{
@@ -183,7 +183,7 @@
                "green":255,
                "blue":255
             },
-            "url":"images/zoneNightSky.png"
+            "url":"https://aleziakurdis.github.io/materialDataCreator/images/zoneNightSky.png"
          },
          "haze":{
             "hazeRange":800,
@@ -236,7 +236,7 @@
         "grab": {
             "grabbable": false
         },
-        "modelURL": "models/VIRCADIA_LOGO_NIGHT.fbx",
+        "modelURL": "https://aleziakurdis.github.io/materialDataCreator/models/VIRCADIA_LOGO_NIGHT.fbx",
         "animation": {
             "allowTranslation": false
     }
@@ -264,7 +264,7 @@
         "grab": {
             "grabbable": false
         },
-        "modelURL": "models/VIRCADIA_LOGO_NIGHT.fbx",
+        "modelURL": "https://aleziakurdis.github.io/materialDataCreator/models/VIRCADIA_LOGO_NIGHT.fbx",
         "animation": {
             "allowTranslation": false
         }
