@@ -323,8 +323,8 @@
             var chanel = "materialDataCreator.ak.vircadia";
             EventBridge.scriptEventReceived.connect(function (message) {
                 var messageObj = JSON.parse(message);
-
                 if (messageObj.chanel === chanel) {
+                    alert(messageObj.material);
                     if (messageObj.action === "initializeMaterial") {
                         if (messageObj.material !== undefined) {
                             material = messageObj.material;
