@@ -492,14 +492,12 @@
                 this.source.style.backgroundColor = this.color(r, g, b, 1);
                 this.source.style.color = this.color(r, g, b, 1);
                 material.emissive = this.color(r, g, b, 1);
-                generateMaterialJSON();                
+                generateMaterialJSON();
             }); 
 
             EventBridge.scriptEventReceived.connect(function (message) {
                 var messageObj = JSON.parse(message);
-                if (message === "patate") {alert(JSON.stringify(messageObj));}  //##################################################################
                 if (messageObj.chanel === chanel) {
-                    alert(messageObj.material);  //##################################################################
                     if (messageObj.action === "initializeMaterial") {
                         if (messageObj.material !== undefined) {
                             material = messageObj.material;
@@ -508,11 +506,7 @@
                         generateMaterialJSON();
                     }
                 }
-            });            
-            //==================
-            
-            //LoadMaterial();
-            //generateMaterialJSON();
+            });
         </script>
     </body>
 </html>
