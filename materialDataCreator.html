@@ -321,12 +321,10 @@
             };
             
             var chanel = "materialDataCreator.ak.vircadia";
-            EventBridge.scriptEventReceived.connect(function(message){
-
-                var messageObj = parseJSON(message);
+            EventBridge.scriptEventReceived.connect(function (message) {
+                var messageObj = JSON.parse(message);
 
                 if (messageObj.chanel === chanel) {
-                    alert("Got it!");
                     if (messageObj.action === "initializeMaterial") {
                         if (messageObj.material !== undefined) {
                             material = messageObj.material;
