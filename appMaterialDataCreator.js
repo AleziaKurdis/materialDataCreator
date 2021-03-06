@@ -166,6 +166,7 @@
                 "action": "initializeMaterial",
                 "material": currentMaterialRecord
             };
+            tablet.emitScriptEvent("patate"); //############################# IS IT WORKING ????
             tablet.emitScriptEvent(JSON.stringify(message)); //############################# IS IT WORKING ????
             changeDemoShape(currentDemoShape);
             print("MESSAGE: " + JSON.stringify(message)); //##################################################################
