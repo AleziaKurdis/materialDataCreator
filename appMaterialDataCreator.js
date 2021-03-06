@@ -70,7 +70,7 @@
                     },
                     shape: "Cube",
                     position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.25, z: -5 }))
-                });
+                },"local");
         
         
         
@@ -83,7 +83,7 @@
                     priority: 1,
                     materialData: "{\"materials\":{}}",
                     position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.25, z: -3 }))
-                });
+                },"local");
     }
 
     function updateDemo(matData) {
@@ -152,9 +152,12 @@
     }
 
     function onDomainChanged(domain) {
+        if (appStatus) {
+            tablet.gotoHomeScreen();
+            tablet.webEventReceived.disconnect(onMoreAppWebEventReceived);
+            deleteDemo();
+        }
         Window.domainChanged.disconnect(onDomainChanged);
-        print("Domain changed: " + domain);
-        createDemo();
     }
 
     function onScreenChanged(type, url) {
