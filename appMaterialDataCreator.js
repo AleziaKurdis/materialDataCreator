@@ -23,6 +23,7 @@
     var nightmode = false;
     var demoID, materialID;
     var currentMaterialRecord;
+    var currentMaterialData;
     var currentDemoShape = "cube";
 
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
@@ -102,29 +103,42 @@
 
     function onMoreAppWebEventReceived(message) {
         eventObj = JSON.parse(message);
-        if ( eventObj.chanel === chanel){
-            if ( eventObj.action === "updateMaterialData"){
+        if ( eventObj.chanel === chanel) {
+            if ( eventObj.action === "updateMaterialData") {
                 currentMaterialRecord = eventObj.materialRecord;
+                currentMaterialData = eventObj.materialData;
                 updateDemo(eventObj.materialData);
             }
-            if ( eventObj.action === "changeDemoShape"){
+            if ( eventObj.action === "changeDemoShape") {
                 changeDemoShape(eventObj.shape);
             }
-            if ( eventObj.action === "exportMaterialAsJson"){
+            if ( eventObj.action === "createMaterialEntity") {
+                var newMaterialEntityId = Entities.addEntity({
+                    parentID: demoID,
+                    parentMaterialName: "0",
+                    type: "Material",
+                    name: currentMaterialRecord.name,
+                    materialURL: "materialData",
+                    priority: 1,
+                    materialData: JSON.stingify(currentMaterialData),
+                    position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.25, z: -2 }))
+                },"domain");
+            }
+            if ( eventObj.action === "exportMaterialAsJson") {
                 Window.saveFileChanged.connect(onFileSaveChanged);
                 Window.saveAsync("Select Where to Save", "", "*.json");
             }            
-            if ( eventObj.action === "teleportToServerless"){
+            if ( eventObj.action === "teleportToServerless") {
                 deleteDemo();
                 nightmode = false;
                 Window.location = ROOT + "serverless.json?version=" + Math.floor(Math.random() * 32000);
                 Window.domainChanged.connect(onDomainChanged);
             }
-            if ( eventObj.action === "toggleDayNight"){
+            if ( eventObj.action === "toggleDayNight") {
                 var nightZoneID = Entities.findEntitiesByName("NIGHT_ZONE_MAT-GEN", MyAvatar.position, 200, true);
                 var dayZoneID = Entities.findEntitiesByName("DAY_ZONE_MAT-GEN", MyAvatar.position, 200, true);
                 var blueSpotID = Entities.findEntitiesByName("BLUE_NIGHT_SPOT", MyAvatar.position, 200, true);
-                if (nightmode === false){
+                if (nightmode === false) {
                     //Set Night
                     Entities.editEntity(nightZoneID[0],{"visible": true});
                     Entities.editEntity(blueSpotID[0],{"visible": true});                    
