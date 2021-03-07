@@ -262,8 +262,9 @@
         }
 
 
-        demoID = Entities.addEntity(newDemoDefinition);
-        Entities.editEntity(materialID,{ parentID: demoID, parentMaterialName: "0",});         
+        demoID = Entities.addEntity(newDemoDefinition, "local");
+        Entities.editEntity(materialID,{ parentID: demoID, parentMaterialName: "0",});
+        audioFeedback.action();
     }
 
     function cleanup() {
