@@ -95,6 +95,21 @@
                 font-size: 11px;
                 padding: 2px;
             }
+            #helpOverlay {
+                position: fixed;
+                display: none;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #4c4d5c;
+                color: #ffffff;
+                padding: 10px;
+                z-index: 2;
+                cursor: pointer;
+            }
         </style>
         <script src='jquery.min.js'></script>
         <script src="color-picker.min.js"></script>
@@ -396,7 +411,8 @@
             
             <div class='header'>
                 <table style= 'width: 100%;'><tr>
-                    <td class='title' colspan='11'>MATERIAL DATA CREATOR</td>
+                    <td class='title' colspan='10'>MATERIAL DATA CREATOR<br>&nbsp;</td>
+                    <td style= 'width: 10%; vertical-align: top;'><a href='#' onclick='helpOn();'><img src="images/help.png"></a></td>
                 </tr><tr>
                 <td style= 'width: 10%;'><a href='#' onclick='demo("cube");'><img class='demo' src="images/demo_cube.png"></a></td>
                 <td style= 'width: 10%;'><a href='#' onclick='demo("sphere");'><img class='demo' src="images/demo_sphere.png"></a></td>
@@ -515,6 +531,38 @@
                     }
                 }
             });
+            
+            function helpOn() {
+                document.getElementById("helpOverlay").style.display = "block";
+            }
+
+            function helpOff() {
+                document.getElementById("helpOverlay").style.display = "none";
+            }
         </script>
+        <div id="helpOverlay"  onclick="helpOff();">
+            <div style='text-align:right; font-size:14px; color:#999999; width:95%;'>&#10006;</div><br><br>
+            <div style='width:95%;'>
+                <img class='demo' src="images/demo_cube.png"> <img class='demo' src="images/demo_sphere.png"> 
+                <img class='demo' src="images/demo_teapot.png"> <img class='demo' src="images/demo_vircadia.png"><br>
+                You can use these buttons to change the shape of the demonstration entity.
+                <br><hr>
+                <img class='studio' src="images/studio.png"><br>
+                You can use this button to teleport yourself to a serverless environment preconfigured with a consistent "ambientLight".
+                <br><hr>
+                <img class='studio' src="images/toggle_day_night.png"><br>
+                You can use this button to toggle between day and night in the serverless preconfigured environment.
+                <br><hr>
+                <img  class='reset' src="images/reset.png"><br>
+                This button resets the material data as new blank material.
+                <br><hr>
+                <img class='save' src="images/save_as_json.png"><br>
+                You can use this button to export the material data as a .json file. Such a .json file can be used in a material entity. It's mainly useful when you plan to reuse the same material for many entities. Using a .json file can simplify the update of a material used on many entities.
+                <br><hr>
+                <img class='save' src="images/create_material_entity.png"><br>
+                This button generates a Material entity from the specified material data. (Ready to be used.)
+                <br><hr>
+            </div>
+        </div>
     </body>
 </html>
