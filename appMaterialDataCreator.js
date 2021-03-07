@@ -114,7 +114,6 @@
             }
             if ( eventObj.action === "createMaterialEntity") {
                 var newMaterialEntityId = Entities.addEntity({
-                    parentID: demoID,
                     parentMaterialName: "0",
                     type: "Material",
                     name: currentMaterialRecord.name,
