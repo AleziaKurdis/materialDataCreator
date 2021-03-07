@@ -186,6 +186,7 @@
             function loadMaterial() {        
                 document.materialEditor.name.value = material.name;
                 document.materialEditor.albedo.value = material.albedo;
+                document.materialEditor.albedo.style.backgroundColor = material.albedo;
                 document.materialEditor.metallic.value = material.metallic * 1000;
                 document.materialEditor.metallic_value.value = material.metallic;
                 document.materialEditor.roughness.value = material.roughness * 1000;
@@ -193,6 +194,7 @@
                 document.materialEditor.opacity.value = material.opacity * 1000;
                 document.materialEditor.opacity_value.value = material.opacity;
                 document.materialEditor.emissive.value = material.emissive;
+                document.materialEditor.emissive.style.backgroundColor = material.emissive;
                 document.materialEditor.bloom.value = material.bloom * 100;
                 document.materialEditor.bloom_value.value = material.bloom;
                 document.materialEditor.scattering.value = material.scattering * 1000;
@@ -205,7 +207,8 @@
                 document.materialEditor.opacityMap.value = material.opacityMap;
                 document.materialEditor.emissiveMap.value = material.emissiveMap;
                 document.materialEditor.scatteringMap.value = material.scatteringMap;
-                document.materialEditor.occlusionMap.value = material.occlusionMap;                 
+                document.materialEditor.occlusionMap.value = material.occlusionMap;
+                
             }
             
             function save( attribute, valueContainer) {
