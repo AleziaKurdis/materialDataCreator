@@ -26,9 +26,7 @@
     var currentMaterialData;
     var currentDemoShape = "cube";
 
-    Script.include([
-        "audioFeedback/audioFeedback.js",  
-    ]);
+    Script.include(["audioFeedback.js"]);
 
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
 
