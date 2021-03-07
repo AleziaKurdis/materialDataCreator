@@ -201,6 +201,7 @@
     }
 
     function changeDemoShape(shape) {
+        audioFeedback.action();
         currentDemoShape = shape;
         var prop = Entities.getEntityProperties(demoID, ["position"]);
         Entities.editEntity(materialID,{ parentID: "{00000000-0000-0000-0000-000000000000}",});
@@ -264,7 +265,6 @@
 
         demoID = Entities.addEntity(newDemoDefinition, "local");
         Entities.editEntity(materialID,{ parentID: demoID, parentMaterialName: "0",});
-        audioFeedback.action();
     }
 
     function cleanup() {
