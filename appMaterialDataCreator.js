@@ -26,6 +26,10 @@
     var currentMaterialData;
     var currentDemoShape = "cube";
 
+    Script.include([
+        "audioFeedback/audioFeedback.js",  
+    ]);
+
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
 
     tablet.screenChanged.connect(onScreenChanged);
@@ -122,6 +126,9 @@
                     materialData: currentMaterialData,
                     position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.25, z: -2 }))
                 },"domain");
+                if (newMaterialEntityId !== Uuid.NULL) {
+                    audioFeedback.confirmation();
+                }
             }
             if ( eventObj.action === "exportMaterialAsJson") {
                 Window.saveFileChanged.connect(onFileSaveChanged);
