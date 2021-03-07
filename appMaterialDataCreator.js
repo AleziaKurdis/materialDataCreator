@@ -119,7 +119,7 @@
                     name: currentMaterialRecord.name,
                     materialURL: "materialData",
                     priority: 1,
-                    materialData: JSON.stringify(currentMaterialData),
+                    materialData: currentMaterialData,
                     position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.25, z: -2 }))
                 },"domain");
             }
