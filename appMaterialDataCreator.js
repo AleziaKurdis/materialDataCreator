@@ -83,7 +83,7 @@
                     type: "Material",
                     name: "untitled",
                     materialURL: "materialData",
-                    priority: 1,
+                    priority: 2,
                     materialData: "{\"materials\":{}}",
                     position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.25, z: -3 }))
                 },"local");
@@ -120,7 +120,7 @@
                     type: "Material",
                     name: currentMaterialRecord.name,
                     materialURL: "materialData",
-                    priority: 1,
+                    priority: 2,
                     materialData: currentMaterialData,
                     position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.25, z: -2 }))
                 },"domain");
