@@ -19,7 +19,7 @@
     var APP_ICON_INACTIVE = ROOT + "images/icon_materialDate_inactive.png";
     var APP_ICON_ACTIVE = ROOT + "images/icon_materialDate_active.png"; 
     var appStatus = false;
-    var chanel = "materialDataCreator.ak.vircadia";
+    var channel = "materialDataCreator.ak.vircadia";
     var nightmode = false;
     var demoID, materialID;
     var currentMaterialRecord;
@@ -105,7 +105,7 @@
 
     function onMoreAppWebEventReceived(message) {
         eventObj = JSON.parse(message);
-        if ( eventObj.chanel === chanel) {
+        if ( eventObj.channel === channel) {
             if ( eventObj.action === "updateMaterialData") {
                 currentMaterialRecord = eventObj.materialRecord;
                 currentMaterialData = eventObj.materialData;
@@ -130,7 +130,7 @@
             }
             if ( eventObj.action === "exportMaterialAsJson") {
                 Window.saveFileChanged.connect(onFileSaveChanged);
-                Window.saveAsync("Select Where to Save", "", "*.json");
+                Window.saveAsync("Select where to save", "", "*.json");
             }            
             if ( eventObj.action === "teleportToServerless") {
                 deleteDemo();
@@ -183,7 +183,7 @@
             appStatus = true;
 
             var message = {
-                "chanel": chanel,
+                "channel": channel,
                 "action": "initializeMaterial",
                 "material": currentMaterialRecord
             };
