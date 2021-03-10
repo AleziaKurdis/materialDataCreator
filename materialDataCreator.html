@@ -223,7 +223,7 @@
             }
             
             function save( attribute, valueContainer) {
-                if (attribute === "metallic" || attribute === "roughness" || attribute === "opacity" || attribute === "scattering" ) {
+                if (attribute === "metallic" || attribute === "roughness" || attribute === "opacity" || attribute === "opacityCutoff" || attribute === "scattering" ) {
                     material[attribute] = valueContainer.value/1000;
                 } else {
                     if (attribute === "bloom") {
@@ -482,12 +482,12 @@
             <input type="range"  style="width:100%;" min="0" max="1000" value="0" class="slider" name = 'opacity' id = 'opacity' oninput="save('opacity', this); document.materialEditor.opacity_value.value = (document.materialEditor.opacity.value/1000);"><br>
             <table style='width:100%'><tr><td style='width: 50%; text-align: left;'><font class = 'Explain'>|&lt; Transparent</font></td><td style='width: 50%; text-align: right;'><font class = 'Explain'>Opaque &gt;|</font></td></tr></table>
 
-            <font class='label'>Opacity Map Mode: </font> 
+            <font class='label'>Opacity Map Mode:</font><br> 
             <input type="radio" checked name = 'opacityMap' value = 'DO NOT USE' oninput="save('opacityMap', this);">Do not used&nbsp;&nbsp;&nbsp;
             <input type="radio" name = 'opacityMap' value = 'OPACITY_MAP_MASK' oninput="save('opacityMap', this);">Cut off mask&nbsp;&nbsp;&nbsp;
             <input type="radio" name = 'opacityMap' value = 'OPACITY_MAP_BLEND' oninput="save('opacityMap', this);">Blend<br>
             
-            <font class='label'>Cut Off Threshold: </font> <input name = 'opacityCutoff_value' readonly type = 'text' size = '5'><font class = 'Explain'>For 'Cut off mask' mode only.<font><br>
+            <font class='label'>Cut Off Threshold:</font> <input name = 'opacityCutoff_value' readonly type = 'text' size = '5'><font class = 'Explain'> (For 'Cut off mask' mode only.)<font><br>
             <input type="range"  style="width:100%;" min="0" max="1000" value="0" class="slider" name = 'opacityCutoff' id = 'opacityCutoff' oninput="save('opacityCutoff', this); document.materialEditor.opacityCutoff_value.value = (document.materialEditor.opacityCutoff.value/1000);"><br>
             <table style='width:100%'><tr><td style='width: 50%; text-align: left;'><font class = 'Explain'>|&lt; Transparent</font></td><td style='width: 50%; text-align: right;'><font class = 'Explain'>Opaque &gt;|</font></td></tr></table>
             
